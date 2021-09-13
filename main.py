@@ -109,19 +109,6 @@ class BirdNormal(Obstacle):
         SCREEN.blit(self.image[self.index//5], self.rect)
         self.index += 1
 
-class BirdSuperLow(Obstacle):
-    def __init__(self, image):
-        self.type = 0
-        super().__init__(image, self.type)
-        self.rect.y = 325
-        self.index = 0
-
-    def draw(self, SCREEN):
-        if self.index >= 9:
-            self.index = 0
-        SCREEN.blit(self.image[self.index//5], self.rect)
-        self.index += 1
-
 class BirdSuperHigh(Obstacle):
     def __init__(self, image):
         self.type = 0
@@ -233,8 +220,6 @@ def eval_genomes(genomes, config):
                  obstacles.append(BirdNormal(const.BIRD))
             elif rand_int == 3:
                 obstacles.append(BirdSuperHigh(const.BIRD))
-            # elif rand_int == 4:
-            #     obstacles.append(BirdSuperLow(BIRD))
 
         for obstacle in obstacles:
             obstacle.draw(const.SCREEN)
@@ -251,7 +236,7 @@ def eval_genomes(genomes, config):
                 if output[0] >= 0.55 and dinosaur.rect.y == dinosaur.Y_POS:
                     dinosaur.dino_jump = True
                     dinosaur.dino_run = False
-                    
+
         statistics()
         score()
         background()
