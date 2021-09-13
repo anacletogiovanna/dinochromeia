@@ -6,22 +6,18 @@ import sys
 import neat
 import constants as const
 
-
 max_score = 0
 max_score_gen = 1
 
 class Dinosaur:
     X_POS = 80
     Y_POS = 310
-    Y_POS_DUCK = 340
     JUMP_VEL = 8.5
 
     def __init__(self, img=const.RUNNING[0]):
-        self.duck_img = const.DUCKING
         self.run_img = const.RUNNING
         self.jump_img = const.JUMPING
         self.image = img
-        self.dino_duck = False
         self.dino_run = True
         self.dino_jump = False
         self.jump_vel = self.JUMP_VEL
@@ -30,20 +26,12 @@ class Dinosaur:
         self.step_index = 0
 
     def update(self):
-        if self.dino_duck:
-            self.duck()
         if self.dino_run:
             self.run()
         if self.dino_jump:
             self.jump()
         if self.step_index >= 10:
             self.step_index = 0
-
-    def duck(self):
-        self.image = self.duck_img[self.step_index // 5]
-        self.rect.x = self.X_POS
-        self.rect.y = self.Y_POS_DUCK
-        self.step_index += 1
 
     def jump(self):
         self.image = const.JUMPING
@@ -162,15 +150,18 @@ def eval_genomes(genomes, config):
     clock = pygame.time.Clock()
     points = 0
 
-    cloud = Cloud()
 
     obstacles = []
     dinosaurs = []
     ge = []
     nets = []
 
+    cloud = Cloud()
+    dinosaur = Dinosaur()
+
     x_pos_bg = 0
     y_pos_bg = 380
+
     game_speed = 20
 
     for genome_id, genome in genomes:
@@ -258,18 +249,9 @@ def eval_genomes(genomes, config):
                                         distance(dinosaur.rect.midtop,obstacle.rect.midtop)))
 
                 if output[0] >= 0.55 and dinosaur.rect.y == dinosaur.Y_POS:
-                    dinosaur.dino_duck = False
                     dinosaur.dino_jump = True
                     dinosaur.dino_run = False
-                # elif output[0] >= 0 and output[0] <= 0.45:
-                #     dinosaur.dino_duck = True
-                #     dinosaur.dino_run = False
-                #     dinosaur.dino_jump = False
-                # elif output[0] > 0.45 and output[0] < 0.55:
-                #     dinosaur.dino_duck = False
-                #     dinosaur.dino_run = True
-                #     dinosaur.dino_jump = False
-
+                    
         statistics()
         score()
         background()
