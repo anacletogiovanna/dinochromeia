@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
+
 import os
 import pygame
  
-
 pygame.font.init()
-
 
 SCREEN_HEIGHT = 600
 SCREEN_WIDTH = 1100

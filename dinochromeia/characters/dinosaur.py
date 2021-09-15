@@ -1,6 +1,8 @@
+#!/usr/bin/env python3
+
 import random
 import pygame
-from const import constants as _const
+from Const import constants as _const
 
 class Dinosaur():
     X_POS = 80

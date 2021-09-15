@@ -1,5 +1,7 @@
+#!/usr/bin/env python3
+
 import os
-from const import constants as _const
+from Const import constants as _const
 import supportFunctionNeat as _supfuncNeat
 
 if __name__ == '__main__':

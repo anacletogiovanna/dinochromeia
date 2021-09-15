@@ -1,13 +1,15 @@
+#!/usr/bin/env python3
+
 import sys
 import neat
 import pygame
 import random
 import supportFunction as _supfunc
-from const import constants as _const
-from characters import bird as _bird
-from characters import cloud as _cloud
-from characters import cactus as _cactus
-from characters import dinosaur as _dino
+from Const import constants as _const
+from Characters import bird as _bird
+from Characters import cloud as _cloud
+from Characters import cactus as _cactus
+from Characters import dinosaur as _dino
 
 
 game_speed = 0

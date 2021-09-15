@@ -1,4 +1,6 @@
-from const import constants as _const
+#!/usr/bin/env python3
+
+from Const import constants as _const
 
 class Obstacle():
     def __init__(self, image, number_of_cacti):
