@@ -35,9 +35,9 @@ BG = pygame.image.load(os.path.join("Assets/Other", "Track.png"))
 
 FONT = pygame.font.Font('freesansbold.ttf', 20)
 
-SMALL_CACTUS_RECT = 325
-LARGE_CACTUS_RECT = 300
-NORMAL_BIRD_RECT = 260
-HIGH_BIRD_RECT = 150
+SMALL_CACTUS_RECT_HEIGHT = 325
+LARGE_CACTUS_RECT_HEIGHT = 300
+NORMAL_BIRD_RECT_HEIGHT = 260
+HIGH_BIRD_RECT_HEIGHT = 150
 
 FILENAME_CONFIG_NEAT = 'config.txt'

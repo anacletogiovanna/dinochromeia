@@ -1,11 +1,10 @@
-import constants as const
-import obstacle as _obstacle
+from characters import obstacle as _obstacle
 
-class NormalBird(_obstacle.Obstacle):
-    def __init__(self, image):
+class Bird(_obstacle.Obstacle):
+    def __init__(self, image, height_rect):
         self.type = 0
         super().__init__(image, self.type)
-        self.rect.y = const.NORMAL_BIRD_RECT
+        self.rect.y = height_rect
         self.index = 0
 
     def draw(self, SCREEN):
