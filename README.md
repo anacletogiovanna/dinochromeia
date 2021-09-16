@@ -23,6 +23,7 @@ Para a criação do agente inteligente, utilizamos as seguintes bibliotecas:
 │   |   ├── constants.py              # Script de constantes utilizadas no código
 │   ├── config.txt                    # Arquivo de configuração do NEAT-Python 
 │   ├── main.py                       # Script principal 
+│   ├── output_Dino.txt               # Arquivo com logs/reports 
 │   ├── requirements.txt              # Arquivos de bibliotecas utilizadas no projeto
 │   ├── supportFunction.py            # Arquivo com funções de apoio
 │   ├── supportFunctionNeat.py        # Arquivo com funções de apoio relativas ao uso para o NEAT
