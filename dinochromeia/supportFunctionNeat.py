@@ -20,7 +20,7 @@ def score():
         if points % 100 == 0:
             game_speed += 1
         text = _const.FONT.render(f'Pontos:  {str(points)}', True, (0, 0, 0))
-        _const.SCREEN.blit(text, (950, 50))
+        _const.SCREEN.blit(text, (950, 30))
 
 def statistics(lenDinosaurs, gameSpeed, points, popGeneration):
     global max_score, max_score_gen
@@ -35,11 +35,11 @@ def statistics(lenDinosaurs, gameSpeed, points, popGeneration):
     text_4 = _const.FONT.render(f'Maior Pontuacao:  {str(max_score)}', True, (0, 0, 0))      
     text_5 = _const.FONT.render(f'Geracao da Maior Pontuacao:  {str(max_score_gen)}', True, (0, 0, 0))
 
-    _const.SCREEN.blit(text_1, (50, 450))
-    _const.SCREEN.blit(text_2, (50, 480))
-    _const.SCREEN.blit(text_3, (50, 510))
-    _const.SCREEN.blit(text_4, (50, 540))
-    _const.SCREEN.blit(text_5, (50, 570))
+    _const.SCREEN.blit(text_1, (50, 430))
+    _const.SCREEN.blit(text_2, (50, 460))
+    _const.SCREEN.blit(text_3, (50, 490))
+    _const.SCREEN.blit(text_4, (50, 520))
+    _const.SCREEN.blit(text_5, (50, 550))
 
 def background(game_speed):
     global x_pos_bg, y_pos_bg

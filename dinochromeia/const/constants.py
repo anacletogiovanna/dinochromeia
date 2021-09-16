@@ -32,7 +32,7 @@ CLOUD = pygame.image.load(os.path.join("Assets/Other", "Cloud.png"))
 
 BG = pygame.image.load(os.path.join("Assets/Other", "Track.png"))
 
-FONT = pygame.font.Font('freesansbold.ttf', 20)
+FONT = pygame.font.SysFont('comicsansms', 20)
 
 SMALL_CACTUS_RECT_HEIGHT = 325
 LARGE_CACTUS_RECT_HEIGHT = 300
