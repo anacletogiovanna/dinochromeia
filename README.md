@@ -30,4 +30,6 @@ Para a criação do agente inteligente, utilizamos as seguintes bibliotecas:
 
 ```
 
-Este projeto foi baseado no tutorial [Python A.I Tutorial with NEAT](https://www.youtube.com/watch?v=lcC-jiCuDnQ&t=33s)
+Este projeto foi baseado nos tutoriais:
+[Chrome Dinosaur in Python & Pygame](https://youtu.be/KOBKkPWGP-g)
+[Python A.I Tutorial with NEAT](https://www.youtube.com/watch?v=lcC-jiCuDnQ&t=33s)
