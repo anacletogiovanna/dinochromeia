@@ -13,10 +13,19 @@ Para a criação do agente inteligente, utilizamos as seguintes bibliotecas:
 ```bash
 ├── dinochromeia                      # Diretório principal
 │   ├── Assets                        # Diretório com as imagens dos obstáculos, dinossauros
-│   ├── config.txt                    # Arquivo de configuração do NEAT-Python
-│   ├── constants.py                  # Script de constantes utilizadas no código
+│   ├── Characters                    # Diretório com as classes dos personagens
+│   |   ├── bird.py                   # Arquivo da classe Bird, tipo de personagem-obstáculo do jogo
+│   |   ├── cactus.py                 # Arquivo da classe Cactus, tipo de personagem-obstáculo do jogo
+│   |   ├── cloud.py                  # Arquivo da classe Cloud, compõe o cenário pre-histórico do jogo
+│   |   ├── dinosaur.py               # Arquivo da classe Dinosaur, personagem principal do jogo
+│   |   ├── obstacle.py               # Arquivo da classe Obstacle, demais obstáculos herdam desta.
+│   ├── Const                         # Diretório com a classe das constantes utlizadas
+│   |   ├── constants.py              # Script de constantes utilizadas no código
+│   ├── config.txt                    # Arquivo de configuração do NEAT-Python 
 │   ├── main.py                       # Script principal 
 │   ├── requirements.txt              # Arquivos de bibliotecas utilizadas no projeto
+│   ├── supportFunction.py            # Arquivo com funções de apoio
+│   ├── supportFunctionNeat.py        # Arquivo com funções de apoio relativas ao uso para o NEAT
 
 ```
 
