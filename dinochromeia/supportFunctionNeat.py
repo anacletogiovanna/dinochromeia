@@ -6,7 +6,7 @@ import pygame
 import random
 import supportFunctionGame as _supfunc
 from Utils import constants as _const
-from Characters import bird as _bird
+from Characters import pterosaur as _ptero
 from Characters import cloud as _cloud
 from Characters import cactus as _cactus
 from Characters import dinosaur as _dino
@@ -66,9 +66,9 @@ def evaluationFunction(genomes, config):
             elif obstacleChoice == 1:
                 obstacles.append(_cactus.Cactus(_const.LARGE_CACTUS, random.randint(0, 2), _const.LARGE_CACTUS_RECT_HEIGHT))
             elif obstacleChoice == 2:
-                obstacles.append(_bird.Bird(_const.BIRD, _const.NORMAL_BIRD_RECT_HEIGHT))
+                obstacles.append(_ptero.Pterosaur(_const.PTEROSAUR, _const.NORMAL_PTEROSAUR_RECT_HEIGHT))
             elif obstacleChoice == 3:
-                obstacles.append(_bird.Bird(_const.BIRD, _const.HIGH_BIRD_RECT_HEIGHT))
+                obstacles.append(_ptero.Pterosaur(_const.PTEROSAUR, _const.HIGH_PTEROSAUR_RECT_HEIGHT))
 
         #Desenha os obstaculos na tela e caso o Dino colida com um deles chama a função "removeDino()"
         for obstacle in obstacles:

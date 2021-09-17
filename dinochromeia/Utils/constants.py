@@ -25,8 +25,8 @@ LARGE_CACTUS = [pygame.image.load(os.path.join("Assets/Cactus", "LargeCactus1.pn
                 pygame.image.load(os.path.join("Assets/Cactus", "LargeCactus2.png")),
                 pygame.image.load(os.path.join("Assets/Cactus", "LargeCactus3.png"))]
 
-BIRD = [pygame.image.load(os.path.join("Assets/Bird", "Bird1.png")),
-        pygame.image.load(os.path.join("Assets/Bird", "Bird2.png"))]
+PTEROSAUR = [pygame.image.load(os.path.join("Assets/Pterosaur", "Pterosaur1.png")),
+        pygame.image.load(os.path.join("Assets/Pterosaur", "Pterosaur2.png"))]
 
 CLOUD = pygame.image.load(os.path.join("Assets/Other", "Cloud.png"))
 
@@ -36,8 +36,8 @@ FONT = pygame.font.SysFont('comicsansms', 20)
 
 SMALL_CACTUS_RECT_HEIGHT = 325
 LARGE_CACTUS_RECT_HEIGHT = 300
-NORMAL_BIRD_RECT_HEIGHT = 260
-HIGH_BIRD_RECT_HEIGHT = 260 #150
+NORMAL_PTEROSAUR_RECT_HEIGHT = 260
+HIGH_PTEROSAUR_RECT_HEIGHT = 260 #150
 
 FILENAME_CONFIG_NEAT = 'config.txt'
 GAMENAME = 'DinoChromeia'

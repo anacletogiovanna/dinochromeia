@@ -6,9 +6,9 @@ from Characters import obstacle as _obstacle
 '''
 Classe que herda de obstaculo.
 "height_rect" informa a altura (coordenada y) do desenho do passaro na tela, 
-variando entre NORMAL_BIRD_RECT_HEIGHT e HIGH_BIRD_RECT_HEIGHT
+variando entre NORMAL_PTEROSAUR_RECT_HEIGHT e HIGH_PTEROSAUR_RECT_HEIGHT
 '''
-class Bird(_obstacle.Obstacle):
+class Pterosaur(_obstacle.Obstacle):
     def __init__(self, image, height_rect):
         self.type = 0
         super().__init__(image, self.type)
