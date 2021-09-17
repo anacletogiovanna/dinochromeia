@@ -14,13 +14,37 @@ from Characters import dinosaur as _dino
 max_score = 0
 max_score_gen = 1
 
+'''
+Funcao que calcula a pontuacao e desenha em tela. 
+'''
 def score():
-        global points, game_speed
-        points += 1
-        if points % 100 == 0:
-            game_speed += 1
-        text = _const.FONT.render(f'Pontos:  {str(points)}', True, (0, 0, 0))
-        _const.SCREEN.blit(text, (950, 30))
+    global points, game_speed
+    points += 1
+    gameSpeed()
+    text = _const.FONT.render(f'Pontos: {str(points)}', True, (0, 0, 0))
+    _const.SCREEN.blit(text, (950, 30))
+
+'''
+Funcao que calcula a velocidade do jogo, que e acrescida 
+a cada vez que a pontuacao alcanca um valor multiplo de 100. 
+'''
+def gameSpeed():
+    global points, game_speed
+    if points % 100 == 0:
+        game_speed += 1
+
+'''
+Funcao que desenha a animacao do solo do cenario pre-historico.
+'''
+def background(game_speed):
+    global x_pos_bg, y_pos_bg
+    image_width = _const.BG.get_width()
+    _const.SCREEN.blit(_const.BG, (x_pos_bg, y_pos_bg))
+    _const.SCREEN.blit(_const.BG, (image_width + x_pos_bg, y_pos_bg))
+    if x_pos_bg <= -image_width:
+        x_pos_bg = 0
+    x_pos_bg -= game_speed
+
 
 def statistics(lenDinosaurs, gameSpeed, points, popGeneration):
     global max_score, max_score_gen
@@ -40,15 +64,6 @@ def statistics(lenDinosaurs, gameSpeed, points, popGeneration):
     _const.SCREEN.blit(text_3, (50, 490))
     _const.SCREEN.blit(text_4, (50, 520))
     _const.SCREEN.blit(text_5, (50, 550))
-
-def background(game_speed):
-    global x_pos_bg, y_pos_bg
-    image_width = _const.BG.get_width()
-    _const.SCREEN.blit(_const.BG, (x_pos_bg, y_pos_bg))
-    _const.SCREEN.blit(_const.BG, (image_width + x_pos_bg, y_pos_bg))
-    if x_pos_bg <= -image_width:
-        x_pos_bg = 0
-    x_pos_bg -= game_speed
 
 def reportsNeat():
     pop.add_reporter(neat.StdOutReporter(True))
@@ -87,31 +102,35 @@ def evaluationFunction(genomes, config):
             
         _const.SCREEN.fill((255, 255, 255))
 
+        #Atualizo a acao e desenho em tela a animacao do Dino
         for dinosaur in dinosaurs:
             dinosaur.update()
             dinosaur.draw(obstacles)
 
+        #Se o numero de Dinos for zero, saio do loop principal e analiso uma nova geracao.
         if len(dinosaurs) == 0:
             break
-
+        
+        #Adiciona aleatoriamente um obstaculo dentre as possiveis opcoes
         if len(obstacles) == 0:
-            rand_int = random.randint(0, 3)
-            if rand_int == 0:
+            obstacleChoice = random.randint(0, 3)
+            if obstacleChoice == 0:
                 obstacles.append(_cactus.Cactus(_const.SMALL_CACTUS, random.randint(0, 2), _const.SMALL_CACTUS_RECT_HEIGHT))
-            elif rand_int == 1:
+            elif obstacleChoice == 1:
                 obstacles.append(_cactus.Cactus(_const.LARGE_CACTUS, random.randint(0, 2), _const.LARGE_CACTUS_RECT_HEIGHT))
-            elif rand_int == 2:
+            elif obstacleChoice == 2:
                 obstacles.append(_bird.Bird(_const.BIRD, _const.NORMAL_BIRD_RECT_HEIGHT))
-            elif rand_int == 3:
+            elif obstacleChoice == 3:
                 obstacles.append(_bird.Bird(_const.BIRD, _const.HIGH_BIRD_RECT_HEIGHT))
 
+        #Desenha os obstaculos na tela e caso o Dino colida com um deles chama a função "removeDino()"
         for obstacle in obstacles:
-            obstacle.draw(_const.SCREEN)
+            obstacle.draw()
             obstacle.update(game_speed, obstacles)
             for i, dinosaur in enumerate(dinosaurs):
                 if dinosaur.rect.colliderect(obstacle.rect):
                     ge[i].fitness -= 1
-                    _supfunc.remove(i, dinosaurs, ge, nets)
+                    _supfunc.removeDino(i, dinosaurs, ge, nets)
 
             for i, dinosaur in enumerate(dinosaurs):
                 output = nets[i].activate((dinosaur.rect.y,
