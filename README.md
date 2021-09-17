@@ -19,13 +19,14 @@ Para a criação do agente inteligente, utilizamos as seguintes bibliotecas:
 │   |   ├── cloud.py                  # Arquivo da classe Cloud, compõe o cenário pre-histórico do jogo
 │   |   ├── dinosaur.py               # Arquivo da classe Dinosaur, personagem principal do jogo
 │   |   ├── obstacle.py               # Arquivo da classe Obstacle, demais obstáculos herdam desta.
-│   ├── Const                         # Diretório com a classe das constantes utlizadas
-│   |   ├── constants.py              # Script de constantes utilizadas no código
+│   ├── Utils                         # Diretório com a classe das constantes utlizadas
+│   |   ├── constants.py              # Arquivo de constantes utilizadas no código
+│   |   ├── globalVariableAcross.py   # Arquivo de variaveis globais usadas entre os módulos
 │   ├── config.txt                    # Arquivo de configuração do NEAT-Python 
 │   ├── main.py                       # Script principal 
 │   ├── output_Dino.txt               # Arquivo com logs/reports 
 │   ├── requirements.txt              # Arquivos de bibliotecas utilizadas no projeto
-│   ├── supportFunction.py            # Arquivo com funções de apoio
+│   ├── supportFunctionGame.py        # Arquivo com funções de apoio
 │   ├── supportFunctionNeat.py        # Arquivo com funções de apoio relativas ao uso para o NEAT
 
 ```
