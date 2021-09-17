@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-
+#region Imports
 import os
 import pygame
+#endregion
  
 pygame.font.init()
 
@@ -37,7 +38,7 @@ FONT = pygame.font.SysFont('comicsansms', 20)
 SMALL_CACTUS_RECT_HEIGHT = 325
 LARGE_CACTUS_RECT_HEIGHT = 300
 NORMAL_PTEROSAUR_RECT_HEIGHT = 260
-HIGH_PTEROSAUR_RECT_HEIGHT = 260 #150
+HIGH_PTEROSAUR_RECT_HEIGHT = 150
 
 FILENAME_CONFIG_NEAT = 'config.txt'
 GAMENAME = 'DinoChromeia'

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-
+#region Imports
 from Characters import obstacle as _obstacle
+#endregion
 
 '''
 Classe que herda de obstaculo.

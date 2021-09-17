@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+#region Imports
 import sys
 import neat
 import pygame
@@ -11,6 +11,7 @@ from Characters import cloud as _cloud
 from Characters import cactus as _cactus
 from Characters import dinosaur as _dino
 from Utils import globalVariableAcross as _gva
+#endregion
 
 '''
 Funcao que gera os relatorios estatisticos da evolucao da populacao.
@@ -21,27 +22,42 @@ def reportsNeat():
     pop.add_reporter(stats)
 
 '''
-Funcao que monta o jogo e realiza as avaliacao de cada individuo/geracao
+Funcao que cria baseado, no tamanho da populacao, a populacao, genomas e redes neurais dos Dinos.
 '''
-def evaluationFunction(genomes, config):
-    global obstacles, dinosaurs
+def initializingPopulation(genomes, config):
+    global ge, nets
     _gva.points = 0
-    clock = pygame.time.Clock()
-    obstacles = []
-    dinosaurs = []
-    ge = []
-    nets = []
-    cloud = _cloud.Cloud()
-    _gva.x_pos_bg = 0
-    _gva.y_pos_bg = 380
     _gva.game_speed = 20
-
+    _gva.y_pos_bg = 380
     for genome_id, genome in genomes:
         dinosaurs.append(_dino.Dinosaur())
         ge.append(genome)
         net = neat.nn.FeedForwardNetwork.create(genome, config)
         nets.append(net)
         genome.fitness = 0
+
+'''
+Funcao que avaliacao se o Dino, baseado na coordenada Y do Dino (altura na tela)
+e distancia entre o Dino e o obstaculo vindo.
+'''
+def evaluationFunction(indexDino, coordYDino, distDinoObst):
+    global nets
+    output = nets[indexDino].activate((coordYDino,distDinoObst))
+    return output[0]
+
+'''
+Funcao principal do jogo
+'''
+def mainGame(genomes, config):
+    global obstacles, dinosaurs, ge, nets
+    clock = pygame.time.Clock()
+    ge = []
+    nets = []
+    obstacles = []
+    dinosaurs = []
+    cloud = _cloud.Cloud()
+
+    initializingPopulation(genomes, config)
 
     running = True
     while running:
@@ -61,7 +77,7 @@ def evaluationFunction(genomes, config):
             #Quanto mais o dinossauro permanecer vivo, maior sera seu fitness.
             ge[i].fitness += 1
 
-        #Se o numero de Dinos for zero, saio do loop principal e analiso uma nova geracao.
+        #Se o numero de Dinos for zero, sai do loop principal e analisa uma nova geracao.
         if len(dinosaurs) == 0:
             break
         
@@ -77,7 +93,7 @@ def evaluationFunction(genomes, config):
             elif obstacleChoice == 3:
                 obstacles.append(_ptero.Pterosaur(_const.PTEROSAUR, _const.HIGH_PTEROSAUR_RECT_HEIGHT))
 
-        #Desenha os obstaculos na tela e caso o Dino colida com um deles chama a função "removeDino()"
+        #Desenha os obstaculos na tela e caso o Dino colida com um deles remove-o da populacao"
         for obstacle in obstacles:
             obstacle.draw()
             obstacle.update(_gva.game_speed, obstacles)
@@ -86,14 +102,11 @@ def evaluationFunction(genomes, config):
                     ge[i].fitness -= 1
                     _supfunc.removeDino(i, dinosaurs, ge, nets)
 
+        #Para cada Dino, chama a funcao de avaliacao
+        #Se o output for maior que 0.5 e estiver no solo entao pula
         for i, dinosaur in enumerate(dinosaurs):
-            #input1: coordenada y do Dino (o quao alto ele esta na tela)
-            #input2: distancia entre o Dino e o obstaculo vindo)
-            #output: range que determinara se o Dino pula ou nao
-            output = nets[i].activate((dinosaur.rect.y,
-                                    _supfunc.distance(dinosaur.rect.midtop,obstacle.rect.midtop)))
-            #se o output for maior que 0.5 e estiver no solo entao pula
-            if output[0] >= 0.5 and dinosaur.rect.y == dinosaur.Y_POS:
+            output = evaluationFunction(i, dinosaur.rect.y, _supfunc.distance(dinosaur.rect.midtop,obstacle.rect.midtop))
+            if output >= 0.5 and dinosaur.rect.y == dinosaur.Y_POS:
                 dinosaur.dino_jump = True
                 dinosaur.dino_run = False
 
@@ -120,4 +133,4 @@ def setupNeuralNetworkNeat(config_path):
     )
     pop = neat.Population(config)
     reportsNeat()
-    pop.run(evaluationFunction, sys.maxsize)
+    pop.run(mainGame, sys.maxsize)

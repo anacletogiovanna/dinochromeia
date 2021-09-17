@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-
+#region Imports
 import random
 import pygame
 from Utils import constants as _const
+#endregion
 
 class Dinosaur():
     X_POS = 80

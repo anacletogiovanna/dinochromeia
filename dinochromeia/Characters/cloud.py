@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-
+#region Imports
 import random
 from Utils import constants as _const
+#endregion
 
 class Cloud():
     def __init__(self):

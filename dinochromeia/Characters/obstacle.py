@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-
+#region Imports
 from Utils import constants as _const
+#endregion
 
 class Obstacle():
     def __init__(self, image, number_of_cacti):
