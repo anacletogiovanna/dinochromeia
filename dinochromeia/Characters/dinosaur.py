@@ -2,7 +2,7 @@
 
 import random
 import pygame
-from Const import constants as _const
+from Utils import constants as _const
 
 class Dinosaur():
     X_POS = 80

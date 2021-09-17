@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import random
-from Const import constants as _const
+from Utils import constants as _const
 
 class Cloud():
     def __init__(self):

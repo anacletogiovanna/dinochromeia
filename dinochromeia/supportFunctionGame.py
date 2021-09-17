@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 import math
-import globalVariableAcross as _gva
-from Const import constants as _const
+from Utils import constants as _const
+from Utils import globalVariableAcross as _gva
 
 '''
 Função remove da coleção os Dinos que colidirem no obstáculo.

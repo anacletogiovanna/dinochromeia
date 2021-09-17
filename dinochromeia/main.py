@@ -2,9 +2,8 @@
 
 import os
 import pygame
-from Const import constants as _const
+from Utils import constants as _const
 import supportFunctionNeat as _supfuncNeat
-import test
 
 if __name__ == '__main__':
     pygame.display.set_caption(_const.GAMENAME)

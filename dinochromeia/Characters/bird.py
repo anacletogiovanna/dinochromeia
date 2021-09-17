@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from Const import constants as _const
+from Utils import constants as _const
 from Characters import obstacle as _obstacle
 
 '''

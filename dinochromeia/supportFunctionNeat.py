@@ -4,13 +4,13 @@ import sys
 import neat
 import pygame
 import random
-import supportFunction as _supfunc
-import globalVariableAcross as _gva
-from Const import constants as _const
+import supportFunctionGame as _supfunc
+from Utils import constants as _const
 from Characters import bird as _bird
 from Characters import cloud as _cloud
 from Characters import cactus as _cactus
 from Characters import dinosaur as _dino
+from Utils import globalVariableAcross as _gva
 
 def reportsNeat():
     pop.add_reporter(neat.StdOutReporter(True))
